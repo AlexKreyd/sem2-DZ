@@ -144,14 +144,20 @@ int main() {
         // редактировать информацию о книге
         if(action == 5){
             long long isbn;
+            int check = 0;
             printf("Введите ISBN книги для редактирования:");
             scanf("%lld",&isbn);
             int book_to_edit;
             for(int i =0; i<num_books;++i){ // поиск книги с данным isbn
                 if(isbn == books[i].isbn){
+                    check = 1;
                     book_to_edit = i;
                     break;
                 }
+            }
+            if(check == 0){
+                printf("Книги с введенным ISBN нет в базе данных.\n");
+                continue;
             }
             char new_author[MAX_STRING_LENGTH];
             char new_title[MAX_STRING_LENGTH];
@@ -166,14 +172,20 @@ int main() {
         // изменить количество книг в библиотеке по номеру ISBN
         if(action == 6){
             long long isbn;
+            int check = 0;
             printf("Введите ISBN книги для изменения ее количества:");
             scanf("%lld",&isbn);
             int book_to_edit;
             for(int i =0; i<num_books;++i){ // поиск книги с данным isbn
                 if(isbn == books[i].isbn){
+                    check = 1;
                     book_to_edit = i;
                     break;
                 }
+            }
+            if(check == 0){
+                printf("Книги с введенным ISBN нет в базе данных.\n");
+                continue;
             }
             int n;
             printf("Введите новое количетсво доступных экзапляров данной книги:");
